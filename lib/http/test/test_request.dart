@@ -1,4 +1,3 @@
-
 import 'package:life_journey/http/request/base_request.dart';
 
 class TestRequest extends BaseRequest{
@@ -10,12 +9,11 @@ class TestRequest extends BaseRequest{
 
   @override
   bool needLogin() {
-   return false;
+    return false;
   }
 
   @override
   String path() {
-   return 'uapi/test/test';
+    return 'uapi/test/test';
   }
 }
-

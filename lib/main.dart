@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:life_journey/http/request/test_request.dart';
+
 
 import 'http/core/hi_net.dart';
+import 'http/core/hi_net_exception.dart';
+import 'http/test/test_request.dart';
 
 void main() {
   runApp(MyApp());
@@ -54,8 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() async {
     TestRequest testRequest = new TestRequest();
     testRequest.add("aa", "bb").addHeader("c", "d");
-    var result = HiNet.getInstance().fire(testRequest);
-    print(result);
+    try {
+       var result = await HiNet.getInstance().fire(testRequest);
+       print(result);
+    } on NeedAuth catch (e) {
+       print(e);
+     } on NeedLogin catch (e) {
+       print(e);
+     } on HiNetException catch (e) {
+       print(e);
+    }
   }
 
   @override
