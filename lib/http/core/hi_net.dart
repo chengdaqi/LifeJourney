@@ -2,6 +2,7 @@ import 'package:life_journey/http/core/hi_net_exception.dart';
 import 'package:life_journey/http/request/base_request.dart';
 import 'package:life_journey/http/test/mock_adapter.dart';
 
+import 'hi_dio_adapter.dart';
 import 'hi_net_adapater.dart';
 
 class HiNet {
@@ -19,7 +20,7 @@ class HiNet {
   }
 
   Future<dynamic> send<T>(BaseRequest request) async {
-    HiNetAdapter adapter = MockAdapter();
+    HiNetAdapter adapter = DioAdapter();
     return adapter.send(request);
   }
 

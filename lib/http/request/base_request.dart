@@ -29,18 +29,19 @@ abstract class BaseRequest{
          }
       }
       if(useHttps){
-         uri = Uri.https(authority, pathStr,pathParams);
+         // Uri.http 中第三个为 查询参数
+         uri = Uri.https(authority, pathStr,params);
       }else{
-         uri = Uri.http(authority, pathStr,pathParams);
+         uri = Uri.http(authority, pathStr,params);
       }
-      print("uri"+"${uri.toString()}");
+      print("uri: "+"${uri.toString()}");
       return uri.toString();
    }
 
    // 是否需要登录
    bool needLogin();
 
-   // 请求参数
+   // body请求参数
    Map<String,String> params = Map();
 
    // 构造请求体

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 
+import 'http/core/hi_cache.dart';
 import 'http/core/hi_net.dart';
 import 'http/core/hi_net_exception.dart';
 import 'http/test/test_request.dart';
@@ -54,8 +55,9 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() async {
-    TestRequest testRequest = new TestRequest();
-    testRequest.add("aa", "bb").addHeader("c", "d");
+    /*TestRequest testRequest = new TestRequest();
+    testRequest.useHttps = true;
+    testRequest.add("requestPrams", "1").add("c", "d");
     try {
        var result = await HiNet.getInstance().fire(testRequest);
        print(result);
@@ -65,7 +67,14 @@ class _MyHomePageState extends State<MyHomePage> {
        print(e);
      } on HiNetException catch (e) {
        print(e);
-    }
+    }*/
+    test2();
+  }
+
+  void test2() {
+    HiCache.getInstance().setString("aa", "1234");
+    var value = HiCache.getInstance().get("aa");
+    print('value:$value');
   }
 
   @override
