@@ -16,7 +16,8 @@ class HiCache {
     return _instance;
   }
 
-  ///预初始化，防止在使用get时，prefs还未完成初始化,项目启动时进行初始化
+  /// 预初始化，防止在使用get时，prefs还未完成初始化,项目启动时进行初始化
+  /// 项目启动时就初始化缓存完成
   static Future<HiCache> preInit() async {
     if (_instance == null) {
       var prefs = await SharedPreferences.getInstance();

@@ -1,4 +1,7 @@
 
+import 'package:life_journey/http/core/hi_cache.dart';
+import 'package:life_journey/http/dao/login_dao.dart';
+
 enum HttpRequestMethod {PUT,POST,GET,DELETE}
 
 
@@ -7,15 +10,16 @@ abstract class BaseRequest{
    // http://api.devio.org/uapi/test/test?requestPrams=11
    var pathParams;
 
-   var useHttps = false;
-
-   // 默认前缀
-   static final authority = "api.devio.org";
+   var useHttps = true;
 
    // 返回定义的枚举类型
    HttpRequestMethod httpRequestMethod();
 
    String path();
+
+   String authority() {
+      return "api.devio.org";
+   }
 
    // 返回全部的url地址
    String url(){
@@ -28,13 +32,20 @@ abstract class BaseRequest{
             pathStr = "$pathStr/$pathParams";
          }
       }
+
+      if(needLogin() && LoginDao.getBoardingPass()!=null){
+         addHeader(LoginDao.BOARDING_PASS,LoginDao.getBoardingPass());
+      }
+
       if(useHttps){
          // Uri.http 中第三个为 查询参数
-         uri = Uri.https(authority, pathStr,params);
+         uri = Uri.https(authority(), pathStr,params);
+         print("uri>>>>: "+"${uri.toString()}");
       }else{
-         uri = Uri.http(authority, pathStr,params);
+         uri = Uri.http(authority(), pathStr,params);
+         print("uri>>>>: "+"${uri.toString()}");
       }
-      print("uri: "+"${uri.toString()}");
+
       return uri.toString();
    }
 
@@ -50,7 +61,11 @@ abstract class BaseRequest{
       return this;
    }
 
-   Map<String ,dynamic> header = {};
+   Map<String ,dynamic> header = {
+      'course-flag': 'fa',
+      // ZmEtMjAyMS0wNC0xMiAyMToyMjoyMC1mYQ==fa
+      "auth-token": "ZmEtMjAyMS0wNC0xMiAyMToyMjoyMC1mYQ==fa",
+   };
    // 构造请求头
    BaseRequest addHeader(String k,Object v){
       header[k] = v.toString();

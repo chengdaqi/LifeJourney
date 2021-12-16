@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:life_journey/http/dao/login_dao.dart';
 
 
 import 'http/core/hi_cache.dart';
 import 'http/core/hi_net.dart';
 import 'http/core/hi_net_exception.dart';
-import 'http/test/test_request.dart';
+import 'http/request/notice_reqest.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -68,13 +70,34 @@ class _MyHomePageState extends State<MyHomePage> {
      } on HiNetException catch (e) {
        print(e);
     }*/
-    test2();
+    // test2();
+    loginTest();
+    //testNotice();
+  }
+
+  void loginTest() async{
+    // var result = await LoginDao.register("17010052734", "qwerm,./12","sss","sss");
+    var result = await LoginDao.login("17010052734", "qwerm,./12");
+    print(result);
   }
 
   void test2() {
     HiCache.getInstance().setString("aa", "1234");
     var value = HiCache.getInstance().get("aa");
     print('value:$value');
+  }
+
+  void testNotice() async {
+    try {
+      var notice = await HiNet.getInstance().fire(NoticeRequest());
+      print(notice);
+    } on NeedLogin catch (e) {
+      print(e);
+    } on NeedAuth catch (e) {
+      print(e);
+    } on HiNetException catch (e) {
+      print(e.message);
+    }
   }
 
   @override

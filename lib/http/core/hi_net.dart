@@ -33,11 +33,11 @@ class HiNet {
     } on HiNetException catch (e) {
       error = e;
       response = e.data;
-      printLog(e.message);
     } catch (e) {
       error = e;
-      printLog(e);
     }
+    print("请求返回值为："+response.toString());
+
     if (response == null) {
       printLog(error);
     }
