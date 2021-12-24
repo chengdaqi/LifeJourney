@@ -6,12 +6,12 @@ class TestRequest extends BaseRequest{
   HttpRequestMethod httpRequestMethod() {
     return HttpRequestMethod.GET;
   }
-
+//测试测试·
   @override
   bool needLogin() {
     return false;
   }
-
+//测试测试·
   @override
   String path() {
     return 'uapi/test/test';
