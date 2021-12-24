@@ -6,8 +6,9 @@ import 'package:life_journey/http/request/login_request.dart';
 import 'package:life_journey/http/request/register_request.dart';
 
 class LoginDao {
+  //aasffghj
 
-   static String BOARDING_PASS = "boarding-pass";
+  static String BOARDING_PASS = "boarding-pass";
 
   static login(String username, String password) {
     return _send(username, password);
@@ -23,16 +24,14 @@ class LoginDao {
     BaseRequest request;
     if (imoocId != null && orderId != null) {
       request = RegisterRequest();
-      
+
       request.addHeader("imoocId", imoocId);
       request.addHeader("orderId", orderId);
     } else {
       request = LoginRequest();
     }
 
-    request
-        .add("userName", username)
-        .add("password", password);
+    request.add("userName", username).add("password", password);
 
     // 设置请求头
     /*request.addHeader("auth-token", "ZmEtMjAyMS0wNC0xMiAyMToyMjoyMC1mYQ==fa");
@@ -40,20 +39,19 @@ class LoginDao {
     var result = await HiNet.getInstance().fire(request);
 
     print(result);
-    if(result['code'] == 0 && result['data']!=null){
+    if (result['code'] == 0 && result['data'] != null) {
       HiCache.getInstance().setString(BOARDING_PASS, result['data']);
     }
   }
 
   // 需要登录后成功后才有值
-  static getBoardingPass(){
+  static getBoardingPass() {
     var cachePass = HiCache.getInstance().get(BOARDING_PASS);
-    if(cachePass==null){
+    if (cachePass == null) {
       print("token为空，请先登录");
       return null;
-    }else{
+    } else {
       return cachePass;
     }
   }
-
 }
