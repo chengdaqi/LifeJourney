@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:life_journey/http/dao/login_dao.dart';
 
 
+import 'demo/bottom_barview.dart';
 import 'http/core/hi_cache.dart';
 import 'http/core/hi_net.dart';
 import 'http/core/hi_net_exception.dart';
@@ -30,9 +31,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: BottomBarViewDemo(),
     );
   }
+  // This widget is the root of your application.
 }
 
 class MyHomePage extends StatefulWidget {
