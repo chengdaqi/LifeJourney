@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:life_journey/view/bottom_bar_view.dart';
 import 'package:life_journey/view/index/photo_album.dart';
@@ -11,10 +10,12 @@ class BottomBarViewDemo extends StatefulWidget {
 }
 
 class _BottomBarViewDemoState extends State<BottomBarViewDemo> {
-  String title = '0';
+  final List<Widget> page = List();
+  int _currentIndex = 0;
 
   @override
   void initState() {
+    page.add(photoAlbum());
     super.initState();
   }
 
@@ -26,13 +27,20 @@ class _BottomBarViewDemoState extends State<BottomBarViewDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: AppBar(title: Text('BottomBarView')),
+      backgroundColor: Colors.grey[300],
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        title: Text("陪你的时光"),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.search), onPressed: () {})
+        ],
+        iconTheme: IconThemeData(color: Colors.black),
+        textTheme: TextTheme(headline6: TextStyle(color: Colors.black)),
+      ),
       body: Stack(
         children: <Widget>[
-          Container(
-              child: photoAlbum()
-          ),
+          Container(child: (page == null ? photoAlbum() : page[_currentIndex])),
           bottomBar(),
         ],
       ),
@@ -45,8 +53,7 @@ class _BottomBarViewDemoState extends State<BottomBarViewDemo> {
       BottomBarView(
         tabIconsList: tabIconsList,
         addClick: () {},
-        changeIndex: (index) =>
-            setState(() => title = "${tabIconsList[index].index}"),
+        changeIndex: (index) => setState(() => _currentIndex = index),
       )
     ]);
   }

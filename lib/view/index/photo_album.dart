@@ -8,20 +8,20 @@ import 'model/image_load_view.dart';
 List<Album> photoAlbums = [
   Album(
       picUrl:
-          'https://dss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2617297214,2858371489&fm=58&app=83&f=JPEG?w=300&h=400&s=6CC1A946BEC900DE112908B30300D090',
-      name: '我的传记'),
+          'https://time-with-you.oss-cn-hangzhou.aliyuncs.com/1.png',
+      name: '亲子日记'),
   Album(
       picUrl:
-          'https://cdn.shopify.com/s/files/1/0057/3728/3618/products/5cae019e64c0ee10ead36a00e60f0137_eeb2d749-fdbe-46fd-978a-870cc7e0ddf7_500x.jpg?v=1573593942',
-      name: '亲子相册'),
+          'https://time-with-you.oss-cn-hangzhou.aliyuncs.com/2.png',
+      name: '我的故事'),
   Album(
       picUrl:
-          'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2581346773.webp',
-      name: '旅行相册'),
+          'https://time-with-you.oss-cn-hangzhou.aliyuncs.com/3.png',
+      name: '旅行日记'),
   Album(
       picUrl:
-          'https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3401745210,3434810146&fm=58&app=83&f=JPEG?w=400&h=533&s=E8E2A144FAB1AE5D0CFD548403007082',
-      name: '校园生活'),
+          'https://time-with-you.oss-cn-hangzhou.aliyuncs.com/4.png',
+      name: '致青春'),
 ];
 
 class photoAlbum extends StatefulWidget {
@@ -119,7 +119,7 @@ class _MoviesConceptPageState extends State<photoAlbum> {
                                             fontSize: 24)),
                                     RaisedButton(
                                         color: Colors.black,
-                                        child: Text('BUY TICKET',
+                                        child: Text('点击回忆',
                                             style:
                                                 TextStyle(color: Colors.white)),
                                         onPressed: () {})
