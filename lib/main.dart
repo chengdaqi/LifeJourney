@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:life_journey/http/dao/login_dao.dart';
+import 'package:life_journey/view/bottom_barview.dart';
 
 
-import 'demo/bottom_barview.dart';
+
 import 'http/core/hi_cache.dart';
 import 'http/core/hi_net.dart';
 import 'http/core/hi_net_exception.dart';

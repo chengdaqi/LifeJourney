@@ -7,29 +7,25 @@ import 'model/image_load_view.dart';
 
 List<Album> photoAlbums = [
   Album(
-      picUrl:
-          'https://time-with-you.oss-cn-hangzhou.aliyuncs.com/1.png',
+      picUrl: 'https://time-with-you.oss-cn-hangzhou.aliyuncs.com/1.png',
       name: '亲子日记'),
   Album(
-      picUrl:
-          'https://time-with-you.oss-cn-hangzhou.aliyuncs.com/2.png',
+      picUrl: 'https://time-with-you.oss-cn-hangzhou.aliyuncs.com/2.png',
       name: '我的故事'),
   Album(
-      picUrl:
-          'https://time-with-you.oss-cn-hangzhou.aliyuncs.com/3.png',
+      picUrl: 'https://time-with-you.oss-cn-hangzhou.aliyuncs.com/3.png',
       name: '旅行日记'),
   Album(
-      picUrl:
-          'https://time-with-you.oss-cn-hangzhou.aliyuncs.com/4.png',
+      picUrl: 'https://time-with-you.oss-cn-hangzhou.aliyuncs.com/4.png',
       name: '致青春'),
 ];
 
-class photoAlbum extends StatefulWidget {
+class PhotoAlbum extends StatefulWidget {
   @override
-  createState() => _MoviesConceptPageState();
+  createState() => _PhotoAlbumPageState();
 }
 
-class _MoviesConceptPageState extends State<photoAlbum> {
+class _PhotoAlbumPageState extends State<PhotoAlbum> {
   final pageController = PageController(viewportFraction: .8);
   final ValueNotifier<double> _pageNotifier = ValueNotifier(0.0);
 

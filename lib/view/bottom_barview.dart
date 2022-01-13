@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:life_journey/view/bottom_bar_view.dart';
+import 'package:life_journey/view/page/bottom_bar_view.dart';
 import 'package:life_journey/view/index/photo_album.dart';
+import 'package:life_journey/view/index/travel_diary.dart';
+
+import 'index/future_self.dart';
+import 'index/myself.dart';
 
 class BottomBarViewDemo extends StatefulWidget {
   BottomBarViewDemo({Key key}) : super(key: key);
@@ -15,7 +19,10 @@ class _BottomBarViewDemoState extends State<BottomBarViewDemo> {
 
   @override
   void initState() {
-    page.add(photoAlbum());
+    page.add(PhotoAlbum());
+    page.add(TravelDiary());
+    page.add(FutureSelf());
+    page.add(Myself());
     super.initState();
   }
 
@@ -40,7 +47,7 @@ class _BottomBarViewDemoState extends State<BottomBarViewDemo> {
       ),
       body: Stack(
         children: <Widget>[
-          Container(child: (page == null ? photoAlbum() : page[_currentIndex])),
+          Container(child: (page == null ? PhotoAlbum() : page[_currentIndex])),
           bottomBar(),
         ],
       ),
