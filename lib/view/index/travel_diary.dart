@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:life_journey/view/page/travel_page.dart';
 
 /**
  * 旅行日记
@@ -15,7 +16,7 @@ class _TravelDiaryPageState extends State<TravelDiary> {
     return Scaffold(
         body: Stack(
           children: <Widget>[
-            Container(child: Text("旅行日记")),
+            Container(child: TravelPage()),
           ],
         )
     );

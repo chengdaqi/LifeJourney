@@ -51,6 +51,7 @@ class _PhotoAlbumPageState extends State<PhotoAlbum> {
 
   @override
   Widget build(BuildContext context) {
+    // 内部相册圆角
     final borderRadius = BorderRadius.circular(20);
 
     return Scaffold(
@@ -84,6 +85,7 @@ class _PhotoAlbumPageState extends State<PhotoAlbum> {
                   lerpDouble(0.0, .5, (index - _pageNotifier.value).abs());
               if (opacity > 1.0) opacity = 1.0;
               if (opacity < 0.0) opacity = 0.0;
+              // 下一个相册图片的偏移
               return Transform.translate(
                   offset: Offset(0.0, lerp * 50),
                   child: Opacity(
@@ -106,6 +108,7 @@ class _PhotoAlbumPageState extends State<PhotoAlbum> {
                                             borderRadius: borderRadius,
                                             child: ImageLoadView(
                                                 photoAlbums[index].picUrl))),
+                                    // 相册与文字宽度
                                     SizedBox(height: 15),
                                     Text(photoAlbums[index].name,
                                         textAlign: TextAlign.center,
@@ -115,7 +118,7 @@ class _PhotoAlbumPageState extends State<PhotoAlbum> {
                                             fontSize: 24)),
                                     RaisedButton(
                                         color: Colors.black,
-                                        child: Text('点击回忆',
+                                        child: Text('开启回忆',
                                             style:
                                                 TextStyle(color: Colors.white)),
                                         onPressed: () {})
