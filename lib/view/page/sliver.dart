@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:life_journey/component/sliver_appbar_delegate.dart';
-import 'package:life_journey/global/custom_icon.dart';
 import 'package:life_journey/utils/utils.dart';
 import 'package:life_journey/view/index/model/image.dart';
 import 'package:life_journey/view/index/model/image_load_view.dart';
@@ -186,9 +185,10 @@ class _SliverPageState extends State<SliverPage>
                         automaticallyImplyLeading: false,
                         elevation: 0.0,
                         pinned: true,
-                        backgroundColor: Colors.white,
+                        backgroundColor: Colors.deepPurpleAccent,
                         forceElevated: innerBoxIsScrolled,
-                        expandedHeight: headerHeight - Utils.topSafeHeight,
+                        // expandedHeight: headerHeight - Utils.topSafeHeight,
+                        expandedHeight: 0,
                         centerTitle: true,
                         title: Container(
                             decoration: BoxDecoration(
@@ -216,7 +216,7 @@ class _SliverPageState extends State<SliverPage>
                                   Icon(Icons.eco_rounded, color: barIconColor),
                               onPressed: () {})
                         ],
-                        flexibleSpace: FlexibleSpaceBar(
+                        /*flexibleSpace: FlexibleSpaceBar(
                           background: Column(children: <Widget>[
                             /// 顶部banner部分
                             Container(
@@ -242,7 +242,9 @@ class _SliverPageState extends State<SliverPage>
                                 height: 100.0,
                                 color: Colors.grey[300].withOpacity(0.8)),
                           ]),
-                        ))),
+                        )*/
+                    )
+                ),
 
                 /// TabBar部分
                 SliverPersistentHeader(
