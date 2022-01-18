@@ -35,7 +35,6 @@ class _TravelPageState extends State<TravelPage>
     _tabController = TabController(length: 0, vsync: this);
     try {
       TravelTabModal modal = await TravelTabModalDao.fetch();
-      modal.tabs.insert(0, TravelTab(labelName:"我的足迹"));
       _tabController = TabController(length: modal.tabs.length, vsync: this);
       setState(() {
         tabs = modal.tabs;
@@ -56,10 +55,6 @@ class _TravelPageState extends State<TravelPage>
         type: tab.type,
       );
     }).toList();
-
-    list.insert(0,TravelTabPage(
-      child: TimeLinePage(),
-    ) );
 
     return Scaffold(
       body: Column(

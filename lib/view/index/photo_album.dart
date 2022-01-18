@@ -51,10 +51,19 @@ class _PhotoAlbumPageState extends State<PhotoAlbum> {
 
   @override
   Widget build(BuildContext context) {
-    // 内部相册圆角
     final borderRadius = BorderRadius.circular(20);
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        title: Text("陪你的时光"),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.search), onPressed: () {})
+        ],
+        iconTheme: IconThemeData(color: Colors.black),
+        textTheme: TextTheme(headline6: TextStyle(color: Colors.black)),
+      ),
       body: Stack(children: [
         Positioned.fill(
             child: ValueListenableBuilder<double>(

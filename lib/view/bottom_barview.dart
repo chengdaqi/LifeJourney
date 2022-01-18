@@ -35,7 +35,7 @@ class _BottomBarViewDemoState extends State<BottomBarViewDemo> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
+      /*appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         title: Text("陪你的时光"),
@@ -44,7 +44,7 @@ class _BottomBarViewDemoState extends State<BottomBarViewDemo> {
         ],
         iconTheme: IconThemeData(color: Colors.black),
         textTheme: TextTheme(headline6: TextStyle(color: Colors.black)),
-      ),
+      ),*/
       body: Stack(
         children: <Widget>[
           Container(child: (page == null ? PhotoAlbum() : page[_currentIndex])),
