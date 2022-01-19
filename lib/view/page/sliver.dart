@@ -8,10 +8,6 @@ import 'package:life_journey/view/index/model/image.dart';
 import 'package:life_journey/view/index/model/image_load_view.dart';
 import 'package:life_journey/view/page/time_line.dart';
 
-/**
- *
- *
- * **/
 class SliverPage extends StatefulWidget {
   SliverPage({Key key}) : super(key: key);
 
@@ -41,7 +37,7 @@ class _SliverPageState extends State<SliverPage>
   double navAlpha = 0;
   double headerHeight;
   double bannerHeight = 200;
-  double viewHeight = 200;
+  double viewHeight = 100;
 
   Brightness brightness = Brightness.dark;
   Color barIconColor = Colors.white;
@@ -185,10 +181,9 @@ class _SliverPageState extends State<SliverPage>
                         automaticallyImplyLeading: false,
                         elevation: 0.0,
                         pinned: true,
-                        backgroundColor: Colors.deepPurpleAccent,
+                        backgroundColor: Colors.white,
                         forceElevated: innerBoxIsScrolled,
-                        // expandedHeight: headerHeight - Utils.topSafeHeight,
-                        expandedHeight: 0,
+                        expandedHeight: headerHeight - Utils.topSafeHeight,
                         centerTitle: true,
                         title: Container(
                             decoration: BoxDecoration(
@@ -205,46 +200,68 @@ class _SliverPageState extends State<SliverPage>
                                       fontSize: 14, color: Colors.grey[300]))
                             ])),
                         leading: Container(
-                            // TODO 替换logo
-                            child: Icon(Icons.account_balance,
-                                color: barIconColor, size: 20),
+                            child:
+                                Icon(Icons.home, color: barIconColor, size: 20),
                             alignment: Alignment.centerLeft,
                             padding: EdgeInsets.only(left: 20)),
                         actions: <Widget>[
                           IconButton(
-                              icon:
-                                  Icon(Icons.eco_rounded, color: barIconColor),
+                              icon: Icon(Icons.ac_unit, color: barIconColor),
                               onPressed: () {})
                         ],
-                        /*flexibleSpace: FlexibleSpaceBar(
+                        flexibleSpace: FlexibleSpaceBar(
                           background: Column(children: <Widget>[
                             /// 顶部banner部分
                             Container(
-                                height: 200,
+                                height: bannerHeight,
                                 child: Swiper(
-                                    itemBuilder: (context, index) => ImageLoadView(
-                                        ''),
+                                    itemBuilder: (context, index) =>
+                                        ImageLoadView("https://time-with-you.oss-cn-hangzhou.aliyuncs.com/4.png"),
                                     itemCount: 4,
                                     pagination: SwiperPagination(
                                         builder: SwiperPagination.fraction,
                                         alignment: Alignment.bottomRight),
                                     autoplay: true)),
+
+                            /// TabBar上面部分，（如果TabBar上面纵向有多个控件应尽可能多的将控件放到此处）
                             Container(
-                                //padding: EdgeInsets.all(0),
-                                alignment: Alignment.topCenter,
-                                child: GridView.count(
-                                    crossAxisCount: 4,
-                                    //padding: EdgeInsets.all(10),
-                                    crossAxisSpacing: 5,
-                                    shrinkWrap: true,
-                                    //mainAxisSpacing: 10,
-                                    children: _getData()),
+                                alignment: Alignment.center,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                        height: 80,
+                                        width: 80,
+                                        color: Colors.red,
+                                        child: Icon(Icons.home,
+                                            color: Colors.white)),
+                                    Container(
+                                        height: 80,
+                                        width: 80,
+                                        color: Colors.blue,
+                                        child: Icon(Icons.ac_unit_rounded,
+                                            color: Colors.white)),
+                                    Container(
+                                        height: 80,
+                                        width: 80,
+                                        color: Colors.greenAccent,
+                                        child: Icon(Icons.access_alarms,
+                                            color: Colors.white)),
+                                    Container(
+                                        height: 80,
+                                        width: 80,
+                                        color: Colors.deepOrangeAccent,
+                                        child: Icon(
+                                            Icons.account_balance_wallet,
+                                            color: Colors.white))
+                                  ],
+                                ),
                                 height: 100.0,
-                                color: Colors.grey[300].withOpacity(0.8)),
+                                color: Colors.grey[100].withOpacity(0.8))
                           ]),
-                        )*/
-                    )
-                ),
+                        ))),
 
                 /// TabBar部分
                 SliverPersistentHeader(

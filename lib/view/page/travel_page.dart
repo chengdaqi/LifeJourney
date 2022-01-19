@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:life_journey/http/dao/travel_tab_dao.dart';
 
 import 'package:life_journey/view/index/model/travel_tab_modal.dart';
-import 'package:life_journey/view/page/time_line.dart';
 
 import 'travel_tab_page.dart';
 
