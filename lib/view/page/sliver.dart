@@ -6,7 +6,8 @@ import 'package:life_journey/component/sliver_appbar_delegate.dart';
 import 'package:life_journey/utils/utils.dart';
 import 'package:life_journey/view/index/model/image.dart';
 import 'package:life_journey/view/index/model/image_load_view.dart';
-import 'package:life_journey/view/page/time_line.dart';
+import 'package:life_journey/view/travel/recommend_page.dart';
+import 'package:life_journey/view/travel/time_line.dart';
 
 class SliverPage extends StatefulWidget {
   SliverPage({Key key}) : super(key: key);
@@ -84,88 +85,6 @@ class _SliverPageState extends State<SliverPage>
 
   @override
   Widget build(BuildContext context) {
-    List listData = [
-      {
-        "title": "标题1",
-        "author": "内容1",
-        "image": "https://www.itying.com/images/flutter/1.png"
-      },
-      {
-        "title": "标题2",
-        "author": "内容2",
-        "image": "https://www.itying.com/images/flutter/2.png"
-      },
-      {
-        "title": "标题3",
-        "author": "内容3",
-        "image": "https://www.itying.com/images/flutter/3.png"
-      },
-      {
-        "title": "标题4",
-        "author": "内容4",
-        "image": "https://www.itying.com/images/flutter/4.png"
-      },
-      {
-        "title": "标题5",
-        "author": "内容5",
-        "image": "https://www.itying.com/images/flutter/5.png"
-      },
-      {
-        "title": "标题6",
-        "author": "内容6",
-        "image": "https://www.itying.com/images/flutter/6.png"
-      },
-      {
-        "title": "标题7",
-        "author": "内容7",
-        "image": "https://www.itying.com/images/flutter/7.png"
-      },
-      {
-        "title": "标题8",
-        "author": "内容8",
-        "image": "https://www.itying.com/images/flutter/1.png"
-      },
-      {
-        "title": "标题9",
-        "author": "内容9",
-        "image": "https://www.itying.com/images/flutter/2.png"
-      }
-    ];
-
-    List<Widget> _getData() {
-      List<Widget> list = new List();
-      for (var i = 0; i < listData.length; i++) {
-        list.add(Container(
-          child: ListView(
-            children: [
-              Image.network(
-                listData[i]["image"],
-                fit: BoxFit.cover,
-              ),
-              Text(
-                listData[i]["title"],
-                textAlign: TextAlign.center,
-              )
-            ],
-          ),
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black26, width: 1)),
-        ));
-      }
-      return list;
-    }
-
-    // Tab 页面
-    List<StatefulWidget> page = [
-      TimeLinePage(),
-      TimeLinePage(),
-      TimeLinePage(),
-      TimeLinePage(),
-      TimeLinePage(),
-      TimeLinePage(),
-      TimeLinePage()
-    ];
-
     return Scaffold(
         backgroundColor: Colors.grey[200],
         body: NestedScrollView(
@@ -178,6 +97,7 @@ class _SliverPageState extends State<SliverPage>
                         context),
                     sliver: SliverAppBar(
                         brightness: brightness,
+                        floating: true,
                         automaticallyImplyLeading: false,
                         elevation: 0.0,
                         pinned: true,
@@ -215,8 +135,8 @@ class _SliverPageState extends State<SliverPage>
                             Container(
                                 height: bannerHeight,
                                 child: Swiper(
-                                    itemBuilder: (context, index) =>
-                                        ImageLoadView("https://time-with-you.oss-cn-hangzhou.aliyuncs.com/4.png"),
+                                    itemBuilder: (context, index) => ImageLoadView(
+                                        "https://time-with-you.oss-cn-hangzhou.aliyuncs.com/4.png"),
                                     itemCount: 4,
                                     pagination: SwiperPagination(
                                         builder: SwiperPagination.fraction,
@@ -279,8 +199,7 @@ class _SliverPageState extends State<SliverPage>
             body: TabBarView(
                 controller: controller,
                 children: titleTabs.map((view) {
-                  //return BottomGridView(title: titleTabs[currentIndex]);
-                  return page[currentIndex];
+                  return BottomGridView(title: titleTabs[currentIndex],index:currentIndex);
                 }).toList())));
   }
 }
@@ -288,7 +207,6 @@ class _SliverPageState extends State<SliverPage>
 class BottomGridView extends StatefulWidget {
   final int index;
   final String title;
-
   BottomGridView({Key key, this.index, this.title}) : super(key: key);
 
   @override
@@ -302,39 +220,22 @@ class BottomGridViewState extends State<BottomGridView>
   @override
   void initState() {
     super.initState();
-    getListData(widget.title);
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    double itemWidth = Utils.width / 2 - 4;
 
-    return images.isEmpty
-        ? Center()
-        : StaggeredGridView.countBuilder(
-            padding: EdgeInsets.only(top: Utils.navigationBarHeight),
-            physics: NeverScrollableScrollPhysics(),
-            crossAxisCount: 4,
-            mainAxisSpacing: 4.0,
-            crossAxisSpacing: 4.0,
-            itemBuilder: (context, index) => ImageLoadView(
-                  images[index].thumb,
-                  width: itemWidth,
-                  height:
-                      itemWidth * images[index].height / images[index].width,
-                ),
-            staggeredTileBuilder: (index) => StaggeredTile.fit(3),
-            itemCount: images.length);
-  }
-
-  void getListData(String key) async {
-    images = [];
-    // images = await OtherRepository.getImagesData(key);
-
-    if (mounted) {
-      setState(() {});
-    }
+    List<StatefulWidget> page =  [
+      TimeLinePage(),
+      RecommendPage(),
+      RecommendPage(),
+      RecommendPage(),
+      RecommendPage(),
+      RecommendPage(),
+      RecommendPage()
+    ];
+    return page[widget.index];
   }
 
   @override

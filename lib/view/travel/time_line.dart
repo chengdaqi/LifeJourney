@@ -11,31 +11,11 @@ class TimeLinePage extends StatefulWidget {
 }
 
 class _TimeLinePageState extends State<TimeLinePage> with SingleTickerProviderStateMixin {
-  final PageController pageController =
-      PageController(initialPage: 1, keepPage: true);
-  int pageIx = 1;
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> pages = [
-      timelineModel(TimelinePosition.Left)
-    ];
-
     return Container(
-        child: timelineModel(TimelinePosition.Left),
-        /*bottomNavigationBar: BottomNavigationBar(
-            currentIndex: pageIx,
-            onTap: (i) => pageController.animateToPage(i,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut),
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.format_align_left), label: "LEFT"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.format_align_center), label: "CENTER"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.format_align_right), label: "RIGHT"),
-            ])*/
+        child: timelineModel(TimelinePosition.Right),
     );
   }
 

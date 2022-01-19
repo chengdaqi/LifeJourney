@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:life_journey/view/page/sliver.dart';
-import 'package:life_journey/view/page/travel_page.dart';
 
 /**
  * 旅行日记
