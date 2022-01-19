@@ -10,8 +10,7 @@ class TimeLinePage extends StatefulWidget {
   createState() => _TimeLinePageState();
 }
 
-class _TimeLinePageState extends State<TimeLinePage>
-    with SingleTickerProviderStateMixin {
+class _TimeLinePageState extends State<TimeLinePage> with SingleTickerProviderStateMixin {
   final PageController pageController =
       PageController(initialPage: 1, keepPage: true);
   int pageIx = 1;
@@ -19,18 +18,12 @@ class _TimeLinePageState extends State<TimeLinePage>
   @override
   Widget build(BuildContext context) {
     List<Widget> pages = [
-      timelineModel(TimelinePosition.Left),
-      timelineModel(TimelinePosition.Center),
-      timelineModel(TimelinePosition.Right)
+      timelineModel(TimelinePosition.Left)
     ];
 
-    return Scaffold(
-        appBar: AppBar(title: Text('TimeLine')),
-        body: PageView(
-            onPageChanged: (i) => setState(() => pageIx = i),
-            controller: pageController,
-            children: pages),
-        bottomNavigationBar: BottomNavigationBar(
+    return Container(
+        child: timelineModel(TimelinePosition.Left),
+        /*bottomNavigationBar: BottomNavigationBar(
             currentIndex: pageIx,
             onTap: (i) => pageController.animateToPage(i,
                 duration: const Duration(milliseconds: 300),
@@ -42,7 +35,8 @@ class _TimeLinePageState extends State<TimeLinePage>
                   icon: Icon(Icons.format_align_center), label: "CENTER"),
               BottomNavigationBarItem(
                   icon: Icon(Icons.format_align_right), label: "RIGHT"),
-            ]));
+            ])*/
+    );
   }
 
   timelineModel(TimelinePosition position) => Timeline.builder(
@@ -55,7 +49,7 @@ class _TimeLinePageState extends State<TimeLinePage>
     final textTheme = Theme.of(context).textTheme;
     return TimelineModel(
         Card(
-          margin: EdgeInsets.symmetric(vertical: 16.0),
+          margin: EdgeInsets.symmetric(vertical: 0),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
           clipBehavior: Clip.antiAlias,

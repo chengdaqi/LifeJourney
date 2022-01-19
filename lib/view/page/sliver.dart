@@ -280,7 +280,6 @@ class _SliverPageState extends State<SliverPage>
                 controller: controller,
                 children: titleTabs.map((view) {
                   //return BottomGridView(title: titleTabs[currentIndex]);
-                  // return TimeLinePage();
                   return page[currentIndex];
                 }).toList())));
   }
